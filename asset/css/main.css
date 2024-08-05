@@ -1,0 +1,67 @@
+/* MAIN CSS */
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* HEADER CSS */
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #000;
+    padding: 10px 20px;
+    box-shadow: 0px 1px 0px 0px rgba(203,193,193,0.75);
+
+}
+
+.header .left, .header .right {
+    display: flex;
+    align-items: center;
+}
+
+.header .left img {
+    max-width: 100%;
+    height: auto;
+}
+
+.header .right a {
+    color: #818181; /* White text for links */
+    text-decoration: none; /* No underline */
+    font-size: 20px;
+    padding: 12px;
+    text-decoration: none;
+    display: block;
+}
+
+.header .right a:hover {
+    color: #000;
+    background-color: #eee;
+    transition: 0.3s;
+}
+
+/* Sidebar */
+/* The side navigation menu */
+.sidebar {
+    margin: 0;
+    padding: 0;
+    width: 200px;
+    background-color: #f1f1f1;
+    position: relative;
+    height: 100%;
+    overflow: auto;
+  }
+  
+  /* Page content. The value of the margin-left property should match the value of the sidebar's width property */
+  div.content {
+    margin-left: 200px;
+    padding: 1px 16px;
+    height: 1000px;
+  }
+
+  .sidebar .sort{
+    padding: 25px;
+  }
