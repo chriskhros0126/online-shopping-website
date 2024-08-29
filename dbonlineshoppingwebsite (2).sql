@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 29, 2024 at 04:15 AM
+-- Generation Time: Aug 29, 2024 at 06:07 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -82,6 +82,40 @@ INSERT INTO `watches` (`watch_id`, `category_id`, `model_name`, `sub_model`, `si
 (15, 4, 'SEAMASTER', 'seamaster', '41 MM', 'Steel', 'Steel on Steel', 33800.00, 'OMEGA first introduced the Seamaster 300 in 1957 - designed especially for divers and professionals who worked underwater. More than 60 years later, the timepiece has been completely upgraded with an enhanced form that is ready for a new generation of adventurers.\n\nThis 41 mm stainless steel model includes a blue dial and a blue oxalic anodized aluminium bezel with its diving scale filled with vintage Super-LumiNova. The recessed hour markers and open numerals feature Super-LumiNova, which is also present on the rhodium-plated hands.\n\nPresented on an ergonomic stainless steel bracelet, this timepiece includes a transparent sapphire crystal caseback, enabling a clear view of the OMEGA Co-Axial Master Chronometer Calibre 8912.'),
 (16, 4, 'SEAMASTER', 'seamaster', '41 MM', 'Steel', 'Leather Strap', 32150.00, 'OMEGA first introduced the Seamaster 300 in 1957 - designed especially for divers and professionals who worked underwater. More than 60 years later, the timepiece has been completely upgraded with an enhanced form that is ready for a new generation of adventurers.\n\nThis 41 mm stainless steel model includes a black dial and a black oxalic anodized aluminium bezel with its diving scale filled with vintage Super-LumiNova. The recessed hour markers and open numerals feature Super-LumiNova, which is also present on the rhodium-plated hands.\n\nPresented on a brown leather strap, this timepiece includes a transparent sapphire crystal caseback, enabling a clear view of the OMEGA Co-Axial Master Chronometer Calibre 8912.');
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `watch_images`
+--
+
+CREATE TABLE `watch_images` (
+  `image_id` int(11) NOT NULL,
+  `watch_id` int(11) NOT NULL,
+  `image_path` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `watch_images`
+--
+
+INSERT INTO `watch_images` (`image_id`, `watch_id`, `image_path`) VALUES
+(1, 1, 'productPic/aquaTerra1.avif'),
+(2, 1, 'productPic/aquaTerra2.avif'),
+(3, 1, 'productPic/aquaTerra3.avif'),
+(4, 1, 'productPic/aquaTerra4.avif'),
+(5, 2, 'productPic/diver1.avif'),
+(6, 2, 'productPic/diver2.avif'),
+(7, 2, 'productPic/diver3.png'),
+(8, 2, 'productPic/diver4.avif'),
+(9, 3, 'productPic/planetOcean1.avif'),
+(10, 3, 'productPic/planetOcean2.avif'),
+(11, 3, 'productPic/planetOcean3.avif'),
+(12, 3, 'productPic/planetOcean4.avif'),
+(13, 4, 'productPic/seamaster1.avif'),
+(14, 4, 'productPic/seamaster2.avif'),
+(15, 4, 'productPic/seamaster3.avif'),
+(16, 4, 'productPic/seamaster4.avif');
+
 --
 -- Indexes for dumped tables
 --
@@ -100,6 +134,13 @@ ALTER TABLE `watches`
   ADD KEY `category_id` (`category_id`);
 
 --
+-- Indexes for table `watch_images`
+--
+ALTER TABLE `watch_images`
+  ADD PRIMARY KEY (`image_id`),
+  ADD KEY `watch_id` (`watch_id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -116,6 +157,12 @@ ALTER TABLE `watches`
   MODIFY `watch_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
+-- AUTO_INCREMENT for table `watch_images`
+--
+ALTER TABLE `watch_images`
+  MODIFY `image_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+
+--
 -- Constraints for dumped tables
 --
 
@@ -124,6 +171,12 @@ ALTER TABLE `watches`
 --
 ALTER TABLE `watches`
   ADD CONSTRAINT `watches_ibfk_1` FOREIGN KEY (`category_id`) REFERENCES `categories` (`category_id`);
+
+--
+-- Constraints for table `watch_images`
+--
+ALTER TABLE `watch_images`
+  ADD CONSTRAINT `watch_images_ibfk_1` FOREIGN KEY (`watch_id`) REFERENCES `watches` (`watch_id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

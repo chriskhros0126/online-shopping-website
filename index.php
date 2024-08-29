@@ -80,7 +80,7 @@
     </style>
 </head>
 <body>
-    <?php include('partials/_head.php') ?>
+    <?php include('partials/_head.php'); ?>
 
     <div class="slider-container">
         <div class="slider">
@@ -93,56 +93,41 @@
     </div>
 
     <div class="main">
-        <?php include('partials/_sidebar.php') ?>
+        <?php include('partials/_sidebar.php'); ?>
 
         <div class="container">
-            <?php
-            // Fetch product data from the database
-            $sql = "SELECT model_name, sub_model, size, material, strap, price FROM watches";
-            $result = $conn->query($sql);
+        <?php
+// Fetch product data from the database
+$sql = "SELECT w.model_name, w.sub_model, w.size, w.material, w.strap, w.price, wi.image_path 
+        FROM watches w 
+        LEFT JOIN watch_images wi ON w.watch_id = wi.watch_id";
+$result = $conn->query($sql);
 
-            if ($result->num_rows > 0) {
-                // Output data of each row
-                while($row = $result->fetch_assoc()) {
-                    $subModel = strtolower($row['sub_model']);
-                    $images = [];
-                    
-                    // Check for images with indexes 1 to 4
-                    for ($i = 1; $i <= 4; $i++) {
-                        $imagePath = "productPic/{$subModel}{$i}.avif";
-                        if (file_exists($imagePath)) {
-                            $images[] = $imagePath;
-                        }
-                    }
-                    
-                    // If no specific images found, use a default image
-                    if (empty($images)) {
-                        $images[] = 'productPic/aquaTerra1.avif';
-                    }
+if ($result->num_rows > 0) {
+    // Output data of each row
+    while($row = $result->fetch_assoc()) {
+        $subModel = strtolower($row['sub_model']);
+        $imagePath = $row['image_path'];
 
-                    // Randomly select one image from the available options
-                    $mainImage = $images[array_rand($images)];
+        echo '<div class="product">';
+        // Main image
+        echo '<img src="'.$imagePath.'" alt="'.$row['sub_model'].'" class="product-main-image">';
+        
+        echo '
+            <h2>'.$row['model_name'].' '.$row['sub_model'].'</h2>
+            <p>'.$row['size'].' | '.$row['material'].' | '.$row['strap'].'</p>
+            <h2>RM'.number_format($row['price'], 2).'</h2>
+            <a href="productPage/'.$subModel.'1.php" class="product-details">Details</a>
+            <button class="cart-btn" onclick="addToCart(\''.$row['sub_model'].'\')">Add to Cart</button>
+            <button class="buy-btn" onclick="buyNow(\''.$row['sub_model'].'\')">Buy</button>
+        </div>';
+    }
+} else {
+    echo "No products found.";
+}
 
-                    echo '<div class="product">';
-                    
-                    // Main image
-                    echo '<img src="'.$mainImage.'" alt="'.$row['sub_model'].'" class="product-main-image">';
-                    
-                   echo '
-                        <h2>'.$row['model_name'].' '.$row['sub_model'].'</h2>
-                        <p>'.$row['size'].' | '.$row['material'].' | '.$row['strap'].'</p>
-                        <h2>RM'.number_format($row['price'], 2).'</h2>
-                        <a href="#" class="product-details">Details</a>
-                        <button class="cart-btn" onclick="addToCart(\''.$row['sub_model'].'\')">Add to Cart</button>
-                        <button class="buy-btn" onclick="buyNow(\''.$row['sub_model'].'\')">Buy</button>
-                    </div>';
-                }
-            } else {
-                echo "No products found.";
-            }
-
-            $conn->close();
-            ?>
+$conn->close();
+?>
         </div>        
     </div>
   
