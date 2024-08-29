@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 29, 2024 at 06:07 AM
+-- Generation Time: Aug 29, 2024 at 06:27 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -100,21 +100,21 @@ CREATE TABLE `watch_images` (
 
 INSERT INTO `watch_images` (`image_id`, `watch_id`, `image_path`) VALUES
 (1, 1, 'productPic/aquaTerra1.avif'),
-(2, 1, 'productPic/aquaTerra2.avif'),
-(3, 1, 'productPic/aquaTerra3.avif'),
-(4, 1, 'productPic/aquaTerra4.avif'),
-(5, 2, 'productPic/diver1.avif'),
-(6, 2, 'productPic/diver2.avif'),
-(7, 2, 'productPic/diver3.png'),
-(8, 2, 'productPic/diver4.avif'),
-(9, 3, 'productPic/planetOcean1.avif'),
-(10, 3, 'productPic/planetOcean2.avif'),
-(11, 3, 'productPic/planetOcean3.avif'),
-(12, 3, 'productPic/planetOcean4.avif'),
-(13, 4, 'productPic/seamaster1.avif'),
-(14, 4, 'productPic/seamaster2.avif'),
-(15, 4, 'productPic/seamaster3.avif'),
-(16, 4, 'productPic/seamaster4.avif');
+(2, 2, 'productPic/aquaTerra2.avif'),
+(3, 3, 'productPic/aquaTerra3.avif'),
+(4, 4, 'productPic/aquaTerra4.avif'),
+(5, 5, 'productPic/diver1.avif'),
+(6, 6, 'productPic/diver2.avif'),
+(7, 7, 'productPic/diver3.png'),
+(8, 8, 'productPic/diver4.avif'),
+(9, 9, 'productPic/planetOcean1.avif'),
+(10, 10, 'productPic/planetOcean2.avif'),
+(11, 11, 'productPic/planetOcean3.avif'),
+(12, 12, 'productPic/planetOcean4.avif'),
+(13, 13, 'productPic/seamaster1.avif'),
+(14, 14, 'productPic/seamaster2.avif'),
+(15, 15, 'productPic/seamaster3.avif'),
+(16, 16, 'productPic/seamaster4.avif');
 
 --
 -- Indexes for dumped tables
