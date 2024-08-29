@@ -1,3 +1,6 @@
+<?php include('config.php') 
+?>
+
 <div class="header">
     <!-- LOGO -->
     <div class="left">

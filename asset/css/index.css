@@ -41,10 +41,9 @@ body {
 
 .container {
     display: grid;
-    grid-template-rows: 200px 200px 200px;
-    grid-template-columns: 200px 200px 200px; 
-    gap: 20px;
-    padding: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 40px 20px; /* Adjusted row-gap to 40px, column-gap to 20px */
+    padding: 20px; /* Padding inside the container */
 }
 
 .product {
@@ -54,6 +53,7 @@ body {
     padding: 16px;
     text-align: center;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px; /* Additional margin at the bottom of each product */
 }
 
 .product img {
