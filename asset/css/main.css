@@ -1,5 +1,5 @@
 /* MAIN CSS */
-
+@import url('https://fonts.googleapis.com/css2?family=Playwrite+CU:wght@100..400&display=swap');
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -13,6 +13,7 @@ body {
     justify-content: space-between;
     align-items: center;
     color: #000;
+    background-color: black;
     padding: 10px 20px;
     box-shadow: 0px 1px 0px 0px rgba(203,193,193,0.75);
 
@@ -23,13 +24,23 @@ body {
     align-items: center;
 }
 
-.header .left img {
-    max-width: 100%;
-    height: auto;
+.header .left a h1 {
+    font-family: "Playwrite CU", cursive;
+    font-size: 2.0em;
+    color: #fff;
+}
+
+.header .left a{
+    text-decoration: none;
+    padding: 0px 12px;
+}
+
+.header .left a:visited{
+    color: black;
 }
 
 .header .right a {
-    color: #818181; /* White text for links */
+    color: #ffffff; /* White text for links */
     text-decoration: none; /* No underline */
     font-size: 20px;
     padding: 12px;
