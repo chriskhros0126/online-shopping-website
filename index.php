@@ -17,8 +17,8 @@
         .container {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 40px 20px; /* Row-gap of 40px and column-gap of 20px */
-            padding: 40px 0; /* Top and bottom padding of 40px */
+            gap: 40px 20px;
+            padding: 40px 0;
         }
 
         .product {
@@ -29,8 +29,8 @@
             padding: 20px;
             box-sizing: border-box;
             border: 1px solid #ddd;
-            margin-bottom: 40px; /* Increased margin-bottom for better spacing */
-            font-family: 'Helvetica Neue', Arial, sans-serif; /* Adjust font */
+            margin-bottom: 40px;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
         }
 
         .product h2 {
@@ -82,55 +82,84 @@
 <body>
     <?php include('partials/_head.php'); ?>
 
+    <!-- Slider for Category Filtering -->
     <div class="slider-container">
         <div class="slider">
-            <div class="slide" onclick="filterProducts('All')">All</div>
-            <div class="slide" onclick="filterProducts('Brand A')">Brand A</div>
-            <div class="slide" onclick="filterProducts('Brand B')">Brand B</div>
-            <div class="slide" onclick="filterProducts('Brand C')">Brand C</div>
-            <!-- Add more brands as needed -->
+            <div class="slide" onclick="filterProducts(0)">All</div>
+            <div class="slide" onclick="filterProducts(1)">AQUA TERRA</div>
+            <div class="slide" onclick="filterProducts(2)">DIVER 300M</div>
+            <div class="slide" onclick="filterProducts(3)">PLANET OCEAN 6000M</div>
+            <div class="slide" onclick="filterProducts(4)">HERITAGE MODELS</div>
+            <!-- Add more categories as needed -->
         </div>
     </div>
 
     <div class="main">
         <?php include('partials/_sidebar.php'); ?>
 
-        <div class="container">
-        <?php
-// Fetch product data from the database
-$sql = "SELECT w.model_name, w.sub_model, w.size, w.material, w.strap, w.price, wi.image_path 
-        FROM watches w 
-        LEFT JOIN watch_images wi ON w.watch_id = wi.watch_id";
-$result = $conn->query($sql);
+        <!-- Container for filtered products -->
+        <div class="container" id="product-container">
+            <?php
+            // Include database connection
+            include('config.php');
 
-if ($result->num_rows > 0) {
-    // Output data of each row
-    while($row = $result->fetch_assoc()) {
-        $subModel = strtolower($row['sub_model']);
-        $imagePath = $row['image_path'];
+            // Get category_id from the query parameter, default to 0 for 'All'
+            $category_id = isset($_GET['category_id']) ? intval($_GET['category_id']) : 0;
 
-        echo '<div class="product">';
-        // Main image
-        echo '<img src="'.$imagePath.'" alt="'.$row['sub_model'].'" class="product-main-image">';
-        
-        echo '
-            <h2>'.$row['model_name'].' '.$row['sub_model'].'</h2>
-            <p>'.$row['size'].' | '.$row['material'].' | '.$row['strap'].'</p>
-            <h2>RM'.number_format($row['price'], 2).'</h2>
-            <a href="productPage/'.$subModel.'1.php" class="product-details">Details</a>
-            <button class="cart-btn" onclick="addToCart(\''.$row['sub_model'].'\')">Add to Cart</button>
-            <button class="buy-btn" onclick="buyNow(\''.$row['sub_model'].'\')">Buy</button>
-        </div>';
-    }
-} else {
-    echo "No products found.";
-}
+            // Modify the SQL query to filter by category_id
+            $sql = "SELECT w.model_name, w.sub_model, w.size, w.material, w.strap, w.price, wi.image_path 
+                    FROM watches w 
+                    LEFT JOIN watch_images wi ON w.watch_id = wi.watch_id";
 
-$conn->close();
-?>
+            // If category_id is not 0, filter by category
+            if ($category_id > 0) {
+                $sql .= " WHERE w.category_id = ?";
+            }
+
+            // Prepare and execute the query
+            $stmt = $conn->prepare($sql);
+            if ($category_id > 0) {
+                $stmt->bind_param("i", $category_id); // Bind the category_id
+            }
+            $stmt->execute();
+            $result = $stmt->get_result();
+
+            // Render products based on the result set
+            if ($result->num_rows > 0) {
+                while ($row = $result->fetch_assoc()) {
+                    $subModel = strtolower($row['sub_model']);
+                    $imagePath = $row['image_path'];
+
+                    echo '<div class="product">';
+                    // Main image
+                    echo '<img src="'.$imagePath.'" alt="'.$row['sub_model'].'" class="product-main-image">';
+                    
+                    echo '
+                        <h2>'.$row['model_name'].' '.$row['sub_model'].'</h2>
+                        <p>'.$row['size'].' | '.$row['material'].' | '.$row['strap'].'</p>
+                        <h2>RM'.number_format($row['price'], 2).'</h2>
+                        <a href="productPage/'.$subModel.'1.php" class="product-details">Details</a>
+                        <button class="cart-btn" onclick="addToCart(\''.$row['sub_model'].'\')">Add to Cart</button>
+                        <button class="buy-btn" onclick="buyNow(\''.$row['sub_model'].'\')">Buy</button>
+                    </div>';
+                }
+            } else {
+                echo "No products found.";
+            }
+
+            $stmt->close();
+            $conn->close();
+            ?>
         </div>        
     </div>
-  
+
+    <script>
+        // JavaScript to handle category filtering
+        function filterProducts(category_id) {
+            // Redirect to the same page with the category_id as a query parameter
+            window.location.href = `index.php?category_id=${category_id}`;
+        }
+    </script>
 </body>
 <footer>
 </footer>
