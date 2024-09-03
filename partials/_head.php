@@ -17,8 +17,14 @@
     </div>
     
     <div class="right">
-        <a href="#">Profile</a>
-        <a href="#">Cart (0)</a>
+        <?php if(is_logged_in()){ ?>
+               <a href="profile.php">Profile</a>
+               <a href="cart.php">Cart (0)</a>
+        <?php }else{ ?>
+                <a href="login.php">Profile</a>
+                <a href="register.php">Cart (0)</a>
+        <?php } ?>
+     
     </div>
 </div>
 
