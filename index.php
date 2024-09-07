@@ -18,13 +18,13 @@
 
     <div class="content">
         <h3>Why Choose Us?</h3>
-        <p>At Premium Watch Store, we offer an exclusive collection of luxury watches, featuring the finest brands such as Omega. Our watches are crafted with precision and elegance, perfect for those who appreciate the finer things in life.</p>
+        <p>At Alpha, we offer an exclusive collection of luxury watches, featuring the finest watch brands. Our watches are crafted with precision and elegance, perfect for those who appreciate the finer things in life.</p>
         <p>Whether you're looking for a timeless piece or a modern classic, our collection has something for everyone.</p>
         <a href="shop.php" class="cta-button">Shop Now</a>
     </div>
 
     <footer>
-        <p>&copy; 2024 Premium Watch Store. All rights reserved.</p>
+        <p>&copy; 2024 Alpha. All rights reserved.</p>
     </footer>
 
 </body>

@@ -53,26 +53,3 @@ body {
     background-color: #eee;
     transition: 0.3s;
 }
-
-/* Sidebar */
-/* The side navigation menu */
-.sidebar {
-    margin: 0;
-    padding: 0;
-    width: 200px;
-    background-color: #f1f1f1;
-    position: relative;
-    height: 100%;
-    overflow: auto;
-  }
-  
-  /* Page content. The value of the margin-left property should match the value of the sidebar's width property */
-  div.content {
-    margin-left: 200px;
-    padding: 1px 16px;
-    height: 1000px;
-  }
-
-  .sidebar .sort{
-    padding: 25px;
-  }

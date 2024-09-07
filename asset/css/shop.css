@@ -39,6 +39,14 @@ body {
     background-color: #ddd;
 }
 
+.slide a{
+    text-decoration: none;
+}
+
+.slide a:visited{
+    text-decoration: none;
+}
+
 .container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -171,4 +179,130 @@ button:hover {
 .sidebar button{
     background-color: #28a745;
     color: white;
+}
+
+/* Sidebar Styles */
+.sidebar {
+    margin: 0;
+    padding: 0;
+    width: 200px;
+    background-color: #f1f1f1;
+    border-right: 1px solid #ddd;
+    position: relative;
+    height: 100%;
+    overflow: auto;
+}
+  
+  div.content {
+    margin-left: 200px;
+    padding: 1px 16px;
+    height: 1000px;
+  }
+
+  .sidebar .sort{
+    padding: 10px 12.5px 0 12.5px;
+  }
+
+  .sidebar .filter{
+    padding: 0 12.5px 0 12.5px;
+  }
+
+
+/* Sort and Filter Section */
+.sort, .filter {
+    margin-bottom: 20px;
+}
+
+.sort label, .filter label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.sort select, .filter select {
+    width: 100%;
+    padding: 8px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #fff;
+}
+
+.sort button {
+    width: 100%;
+    padding: 10px;
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.sort button:hover {
+    background-color: #0056b3;
+}
+
+/* Additional Sidebar Styling */
+.sidebar h2 {
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+
+.sidebar .filter {
+    margin-bottom: 20px;
+}
+
+
+/* Product styles for better visualization */
+.product {
+    margin-bottom: 20px;
+    padding: 10px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    text-align: center;
+}
+
+.product img {
+    width: 100%;
+    max-width: 200px;
+    height: auto;
+    margin-bottom: 10px;
+}
+
+.product h2 {
+    font-size: 20px;
+    margin: 10px 0;
+}
+
+.product p {
+    font-size: 14px;
+    margin: 5px 0;
+    color: #666;
+}
+
+.product .cart-btn, .product .buy-btn {
+    width: 48%;
+    padding: 10px;
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    font-size: 14px;
+    cursor: pointer;
+    margin: 5px 1%;
+}
+
+.product .cart-btn:hover, .product .buy-btn:hover {
+    background-color: #0056b3;
+}
+
+.product .buy-btn {
+    background-color: #28a745;
+}
+
+.product .buy-btn:hover {
+    background-color: #218838;
 }

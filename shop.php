@@ -4,15 +4,59 @@
 
     <div class="slider-container">
         <div class="slider">
-            <div class="slide">All</div>
-    <?php 
-        $category = "SELECT * FROM category WHERE";
-    ?>
+            <div class="slide"><a href="#">All</a></div>
+            <?php 
+            $categorySQL = "SELECT * FROM categories";
+            $categoryResult = $conn->query($categorySQL);
+            
+            if ($categoryResult->num_rows > 0){
+                while ($row = $categoryResult->fetch_assoc()){
+                    ?>
+
+                    <div class="slide"><a href="#"><?php echo $row['category_name'] ?></a></div>
+
+                    <?php
+                }
+            }
+            ?>
         </div>
     </div>
 
     <div class="main">
-        <?php include('partials/_sidebar.php'); ?>
+        
+        <div class="sidebar">
+            <div class="sort">
+                <label for="sort-price">Sort By:</label>
+                <select id="sort-price" name="sort-price">
+                    <option value="high-low">Price: High-Low</option>
+                    <option value="low-high">Price: Low-High</option>
+                </select>
+            </div>
+            
+            <!-- Size Filter -->
+            <div class="filter">
+                <label for="filter-size">Size:</label>
+                <select id="filter-size" name="filter-size">
+                    <option value="">All Sizes</option>
+                    <option value="41mm">41mm</option>
+                    <option value="42mm">42mm</option>
+                    <option value="45.5mm">45.5mm</option>
+                </select>
+            </div>
+
+            <!-- Material Filter -->
+            <div class="filter">
+                <label for="filter-material">Material:</label>
+                <select id="filter-material" name="filter-material">
+                    <option value="">All Materials</option>
+                    <option value="steel">Steel</option>
+                    <option value="titanium">Titanium</option>
+                    <option value="O-MEGASTEEL">O-MEGASTEEL</option>
+                </select>
+            </div>
+
+            <button type="submit">Sort</button>
+        </div>
 
         <div class="container" id="product-container">
             <?php
@@ -34,7 +78,7 @@
                     <img src="asset/<?php echo $imagePath?>" alt="<?php echo $row['sub_model'] ?>" class="product-main-image">
                     
                         <h2><?php echo $row['sub_model']?></h2>
-                        <p><?php echo $row['size'] ?> | <?php echo $row['material']?> | <?php echo $row['strap']?></p>
+                        <p><?php echo $row['size'] ?>MM | <?php echo $row['material']?> | <?php echo $row['strap']?></p>
                         <h2>RM<?php echo number_format($row['price'], 2) ?></h2>
                         <button class="cart-btn">Add to Cart</button>
                         <button class="buy-btn">Buy</button>
