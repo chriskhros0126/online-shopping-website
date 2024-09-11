@@ -1,94 +1,52 @@
-<?php include('config/_base.php'); ?>
+<html>
+<header>
+    <?php include('partials/_head.php'); ?>
+    <link rel="stylesheet" href="asset/css/login.css">
+</header>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="asset/css/main.css">
-    <title>Register - Alpha</title>
-</head>
 <body>
+    <h2>Login</h2>
+    <form action="login.php" method="POST">
+        <label for="email">Email</label>
+        <input type="email" name="email" id="email" required>
 
-<div class="container">
-    <h2>Register</h2>
+        <label for="password">Password</label>
+        <input type="password" name="password" id="password" required>
 
-    <?php
-    // Initialize variables to hold form data and errors
-    $username = $email = $password = $confirm_password = '';
-    $_err = [];
-
-    // Check if the form is submitted
-    if (is_post()) {
-        // Get form data
-        $username = post('username');
-        $email = post('email');
-        $password = post('password');
-        $confirm_password = post('confirm_password');
-
-        // Validate form data
-        if (!$username) {
-            $_err['username'] = 'Username is required';
-        }
-        if (!$email || !is_email($email)) {
-            $_err['email'] = 'Valid email is required';
-        }
-        if (!$password) {
-            $_err['password'] = 'Password is required';
-        }
-        if ($password !== $confirm_password) {
-            $_err['confirm_password'] = 'Passwords do not match';
-        }
-
-        // If no errors, insert the user into the database
-        if (empty($_err)) {
-            // Hash the password
-            $hashed_password = password_hash($password, PASSWORD_DEFAULT);
-
-            // Prepare the SQL statement
-            $stmt = $_db->prepare("INSERT INTO users (username, email, password) VALUES (?, ?, ?)");
-            if ($stmt->execute([$username, $email, $hashed_password])) {
-                // Registration successful, redirect to login
-                redirect('login.php');
-            } else {
-                echo '<p>Registration failed. Please try again later.</p>';
-            }
-        }
-    }
-    ?>
-
-    <form action="register.php" method="post">
-        <div class="form-group">
-            <label for="username">Username</label>
-            <?php html_text('username'); ?>
-            <?php err('username'); ?>
-        </div>
-
-        <div class="form-group">
-            <label for="email">Email</label>
-            <?php html_text('email'); ?>
-            <?php err('email'); ?>
-        </div>
-
-        <div class="form-group">
-            <label for="password">Password</label>
-            <?php html_password('password'); ?>
-            <?php err('password'); ?>
-        </div>
-
-        <div class="form-group">
-            <label for="confirm_password">Confirm Password</label>
-            <?php html_password('confirm_password'); ?>
-            <?php err('confirm_password'); ?>
-        </div>
-
-        <div class="form-group">
-            <button type="submit">Register</button>
-        </div>
+        <button type="submit">Login</button>
+        <p>Dont have an account? <a href="register.php">Register</a></p>
+        <p>Forgot password? <a href="register.php">Register</a></p>
     </form>
-
-    <p>Already have an account? <a href="login.php">Login here</a>.</p>
-</div>
-
+    <?php include('partials/_footer.php'); ?>
 </body>
 </html>
+
+<?php
+include('config/_base.php');
+
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $email = $_POST['email'];
+    $password = $_POST['password'];
+
+    // Fetch the user from the database
+    $stmt = $pdo->prepare("SELECT * FROM users WHERE email = ?");
+    $stmt->execute([$email]);
+    $user = $stmt->fetch();
+
+    // Verify the password
+    if ($user && password_verify($password, $user['password'])) {
+        $_SESSION['user'] = $user; // Store user information in the session
+
+        // Check if the user is an admin
+        if ($user['is_admin']) {
+            header('Location: admin_dashboard.php'); // Redirect to admin dashboard
+        } else {
+            header('Location: index.php'); // Redirect to regular user home page
+        }
+        exit();
+    } else {
+        echo "Invalid email or password.";
+    }
+}
+?>
+
