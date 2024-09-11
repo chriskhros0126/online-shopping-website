@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 03, 2024 at 08:55 AM
--- Server version: 10.4.28-MariaDB
--- PHP Version: 8.0.28
+-- Generation Time: Sep 11, 2024 at 07:16 AM
+-- Server version: 10.4.32-MariaDB
+-- PHP Version: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -41,6 +41,32 @@ INSERT INTO `categories` (`category_id`, `category_name`) VALUES
 (2, 'DIVER 300M'),
 (3, 'PLANET OCEAN 6000M'),
 (4, 'HERITAGE MODELS');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `users`
+--
+
+CREATE TABLE `users` (
+  `id` int(11) NOT NULL,
+  `username` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `is_admin` tinyint(1) DEFAULT 0
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`id`, `username`, `email`, `password`, `created_at`, `is_admin`) VALUES
+(1, 'ychhhh', 'ychhhhh@gmial.com', '$2y$10$lYj9EVcdhx082Lqp0jkapO5OR3vK8UztizwhdoM/bG1BkpeMLIHrS', '2024-09-11 04:19:43', 0),
+(2, 'ych', 'ych@gmail.com', '$2y$10$UTAD4VKnCPiMgwQfJqdkeuvKPfBHWEkQPvJ6Djb9s/z8HLAyKYTV6', '2024-09-11 04:24:12', 0),
+(3, 'abc', 'abc@gmail.com', '$2y$10$yoQzO2DOgqHva03rwB7sBu8d40F0Z6a1Xd9HnDFVn5L7fY3CX/V2q', '2024-09-11 04:30:59', 0),
+(4, 'hihi', 'hihi@gmail.com', '$2y$10$hwGvDj86RDid97hQ8TQ3TOmEZz8Esv06WPn85BURVtO.SnR7vJ0Gq', '2024-09-11 04:32:33', 0),
+(5, 'admin1', 'admin1@alpha.com', '$2y$10$Isxo4unuk2Z1Qkl2RIa9ROs81JTHN/GBtZ7OFZZRubVo7K.uGh5Ke', '2024-09-11 05:14:05', 1);
 
 -- --------------------------------------------------------
 
@@ -93,6 +119,14 @@ ALTER TABLE `categories`
   ADD PRIMARY KEY (`category_id`);
 
 --
+-- Indexes for table `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `username` (`username`),
+  ADD UNIQUE KEY `email` (`email`);
+
+--
 -- Indexes for table `watches`
 --
 ALTER TABLE `watches`
@@ -108,6 +142,12 @@ ALTER TABLE `watches`
 --
 ALTER TABLE `categories`
   MODIFY `category_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `users`
+--
+ALTER TABLE `users`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `watches`
