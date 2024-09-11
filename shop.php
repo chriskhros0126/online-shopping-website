@@ -4,7 +4,7 @@
 
     <div class="slider-container">
         <div class="slider">
-            <div class="slide"><a href="#">All</a></div>
+            <div class="slide"><a href="#" class="active">All</a></div>
             <?php 
             $categorySQL = "SELECT * FROM categories";
             $categoryResult = $conn->query($categorySQL);
@@ -77,9 +77,9 @@
                     <!-- Main image -->
                     <img src="asset/<?php echo $imagePath?>" alt="<?php echo $row['sub_model'] ?>" class="product-main-image">
                     
-                        <h2><?php echo $row['sub_model']?></h2>
-                        <p><?php echo $row['size'] ?>MM | <?php echo $row['material']?> | <?php echo $row['strap']?></p>
-                        <h2>RM<?php echo number_format($row['price'], 2) ?></h2>
+                        <h3><?php echo $row['sub_model']?></h3>
+                        <h5><?php echo $row['size'] ?>MM | <?php echo $row['material']?> | <?php echo $row['strap']?></h5>
+                        <h4>RM<?php echo number_format($row['price'], 2) ?></h4>
                         <button class="cart-btn">Add to Cart</button>
                         <button class="buy-btn">Buy</button>
                     </div>

@@ -15,7 +15,7 @@
 
         <button type="submit">Login</button>
         <p>Dont have an account? <a href="register.php">Register</a></p>
-        <p>Forgot password? <a href="register.php">Register</a></p>
+        <p><a href="fotgot_password.php">Forgot password</a></p>
     </form>
     <?php include('partials/_footer.php'); ?>
 </body>
