@@ -37,8 +37,8 @@ if (is_post() && is_set($_POST['add_to_cart'])){
                 <div class="sort">
                     <label for="sort-price">Sort By:</label>
                     <select id="sort-price" name="sort-price">
-                        <option value="low-high" <?php echo isset($_GET['sort-price']) && $_GET['sort-price'] == 'low-high' ? 'selected' : ''; ?>>Price: Low-High</option>
-                        <option value="high-low" <?php echo isset($_GET['sort-price']) && $_GET['sort-price'] == 'high-low' ? 'selected' : ''; ?>>Price: High-Low</option>
+                        <option value="low-high">Price: Low-High</option>
+                        <option value="high-low">Price: High-Low</option>
                     </select>
                 </div>
                 
@@ -47,9 +47,9 @@ if (is_post() && is_set($_POST['add_to_cart'])){
                     <label for="filter-size">Size:</label>
                     <select id="filter-size" name="filter-size">
                         <option value="">All Sizes</option>
-                        <option value="41" <?php echo isset($_GET['filter-size']) && $_GET['filter-size'] == '41' ? 'selected' : ''; ?>>41mm</option>
-                        <option value="42" <?php echo isset($_GET['filter-size']) && $_GET['filter-size'] == '42' ? 'selected' : ''; ?>>42mm</option>
-                        <option value="45.5" <?php echo isset($_GET['filter-size']) && $_GET['filter-size'] == '45.5' ? 'selected' : ''; ?>>45.5mm</option>
+                        <option value="41">41mm</option>
+                        <option value="42" >42mm</option>
+                        <option value="45.5">45.5mm</option>
                     </select>
                 </div>
 
@@ -58,9 +58,9 @@ if (is_post() && is_set($_POST['add_to_cart'])){
                     <label for="filter-material">Material:</label>
                     <select id="filter-material" name="filter-material">
                         <option value="">All Materials</option>
-                        <option value="steel" <?php echo isset($_GET['filter-material']) && $_GET['filter-material'] == 'steel' ? 'selected' : ''; ?>>Steel</option>
-                        <option value="titanium" <?php echo isset($_GET['filter-material']) && $_GET['filter-material'] == 'titanium' ? 'selected' : ''; ?>>Titanium</option>
-                        <option value="O‑MEGASTEEL" <?php echo isset($_GET['filter-material']) && $_GET['filter-material'] == 'O‑MEGASTEEL' ? 'selected' : ''; ?>>O-MEGASTEEL</option>
+                        <option value="steel">Steel</option>
+                        <option value="titanium">Titanium</option>
+                        <option value="O‑MEGASTEEL">O-MEGASTEEL</option>
                     </select>
                 </div>
 
@@ -71,6 +71,7 @@ if (is_post() && is_set($_POST['add_to_cart'])){
         <div class="container" id="product-container">
             <?php
             // Capture sorting and filtering parameters
+            
             $sortOrder = isset($_GET['sort-price']) ? $_GET['sort-price'] : 'low-high';
             $sortColumn = $sortOrder === 'high-low' ? 'DESC' : 'ASC';
             $filterSize = isset($_GET['filter-size']) ? $_GET['filter-size'] : '';
