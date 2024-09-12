@@ -15,7 +15,7 @@
             <?php if (is_logged_in()) { ?>
                 <?php if ($_SESSION['user']['is_admin']) { ?>
                     <a href="admin_dashboard.php">Member Listings</a>
-                    <a href="admin_profile.php">Profile</a>
+                    <a href="profile.php">Profile</a>
                     <a href="logout.php">Logout</a>
                 <?php }else{ ?>
                     <a href="profile.php">Profile</a>

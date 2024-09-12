@@ -1,19 +1,24 @@
 <?php
-include('config/_base.php');
-require_login();  // Ensure user is logged in before accessing the page
-
+    require 'config/_profile_base.php';
+    include 'partials/_head.php';
 ?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Profile</title>
-</head>
-<body>
-    <h1>Welcome, <?php echo $_SESSION['user']['username']; ?></h1>
-    <p>Email: <?php echo $_SESSION['user']['email']; ?></p>
+    <link rel="stylesheet" href="asset/css/product_detail.css">
+    <div class="product-container">
+        <div class="product-image">
+            <img src="<?php echo $image_path ?>" alt="">
+        </div>
+            <div class="product-details">
+                <h2>Details</h1>
+                <p>Created At: <?php echo $date ?></p>
+                <p>Username: <?php echo $username ?></p>
+                <p>Email: <?php echo $email ?></p>
+            <div class="product-buttons">
+                <form action="update_profile.php" method="get">
+                    <button class="add-to-cart">Update</button>
+                </form>
+            </div>
+        </div>
+    </div>
 
-    <a href="logout.php">Logout</a>
-</body>
-</html>
+<?php
+    include 'partials/_footer.php';

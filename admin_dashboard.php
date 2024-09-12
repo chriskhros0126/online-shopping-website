@@ -63,7 +63,7 @@
                     ?>
                     <div class="product">
                         <!-- Main image -->
-                        <a href=""><img src="asset/<?php echo $imagePath?>" class="product-main-image"></a>
+                        <a href=""><img src="<?php echo $imagePath?>" class="product-main-image"></a>
                         <h5>Username: <?php echo htmlspecialchars($row['username']); ?> | Created At: <?php echo htmlspecialchars($row['created_at']); ?></h5>
                     </div>
                     <?php
@@ -77,4 +77,4 @@
 
 <?php
 
-    include 'partials/_foot.php';
+    include 'partials/_footer.php';

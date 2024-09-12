@@ -25,6 +25,13 @@
             exit();
         }
     }
+    function refresh_session($pdo){
+        $temp = $_SESSION['user'];
+        $stmt = $pdo->prepare("SELECT * FROM users WHERE id = ?");
+        $stmt->execute([$temp['id']]);
+        $user = $stmt->fetch();
+        $_SESSION['user'] = $user;
+    }
     function is_get() {
         return $_SERVER['REQUEST_METHOD'] == 'GET';
     }
@@ -74,11 +81,15 @@
     }
     function html_email($key, $attr = '') {
         $value = encode($GLOBALS[$key] ?? '');
-        echo "<input type='email' id='$key' name='$key' $attr>";
+        echo "<input type='email' id='$key' name='$key' value='$value' $attr>";
+    }
+    function html_file($key, $attr = ''){
+        $value = encode($GLOBALS[$key] ?? '');
+        echo "<input type='file' id='$key' name='$key' value='$value' $attr>";
     }
     function html_password($key, $attr = '') {
         $value = encode($GLOBALS[$key] ?? '');
-        echo "<input type='password' id='$key' name='$key' $attr>";
+        echo "<input type='password' id='$key' name='$key' value='$value' $attr>";
     }
     function html_number($key, $min = '', $max = '', $step = '', $attr = '') {
         $value = encode($GLOBALS[$key] ?? '');
