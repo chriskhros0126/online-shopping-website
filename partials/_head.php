@@ -17,15 +17,11 @@
     
     <div class="right">
         <?php if (is_logged_in()) { ?>
-                <?php if ($_SESSION['user']['is_admin']) { ?>
-                    <a href="admin_dashboard.php">Admin Dashboard</a>
-                <?php } ?>
                <a href="profile.php">Profile</a>
                <a href="cart.php">Cart (0)</a>
                <a href="logout.php">Logout</a> <!-- Option to log out -->
         <?php } else { ?>
                <a href="login.php">Login</a>
-               <a href="register.php">Register</a>
                <a href="cart.php">Cart (0)</a>
         <?php } ?>
     </div>

@@ -70,14 +70,15 @@
                     
                     $subModel = strtolower($row['sub_model']);
                     $imagePath = $row['image_path'];
+                    $watch_id = $row['watch_id'];
 
                     ?>
                     <div class="product">
 
                     <!-- Main image -->
-                    <img src="asset/<?php echo $imagePath?>" alt="<?php echo $row['sub_model'] ?>" class="product-main-image">
+                    <a href="productDetail.php?watch_id=<?php echo $watch_id ?>"><img src="asset/<?php echo $imagePath?>" alt="<?php echo $row['sub_model'] ?>" class="product-main-image"></a>
                     
-                        <h3><?php echo $row['sub_model']?></h3>
+                        <a href="productDetail.php?watch_id=<?php echo $watch_id ?>"><h3><?php echo $row['sub_model']?></h3></a>
                         <h5><?php echo $row['size'] ?>MM | <?php echo $row['material']?> | <?php echo $row['strap']?></h5>
                         <h4>RM<?php echo number_format($row['price'], 2) ?></h4>
                         <button class="cart-btn">Add to Cart</button>

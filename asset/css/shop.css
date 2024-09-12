@@ -355,3 +355,11 @@ button:hover {
 }
 */
 
+.container a{
+    text-decoration: none;
+    color: black;
+}
+
+.container a:hover{
+    color:#888;
+}
