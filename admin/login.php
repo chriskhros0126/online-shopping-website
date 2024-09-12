@@ -1,6 +1,6 @@
 <html>
 <header>
-    <?php include('partials/_head.php'); ?>
+    <?php include('../partials/_head.php'); ?>
     <link rel="stylesheet" href="asset/css/login.css">
 </header>
 
@@ -22,7 +22,7 @@
 </html>
 
 <?php
-include('config/_base.php');
+include('../config/_base.php');
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $email = $_POST['email'];

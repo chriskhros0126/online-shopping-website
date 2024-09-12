@@ -4,7 +4,7 @@
 ?>
     <link rel="stylesheet" href="asset/css/login.css">
     <form action="update_admin_profile.php" method="post" enctype="multipart/form-data">
-        <h>Login</h>
+        <h2>Update Profile</h2>
         <label for="email">Email</label>
         <?php html_email("email") ?>
 

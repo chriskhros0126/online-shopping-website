@@ -5,7 +5,7 @@
 ?>
     <link rel="stylesheet" href="asset/css/login.css">
     <form action="login.php" method="post">
-        <h>Login</h>
+        <h2>Login</h2>
         <label for="email">Email</label>
         <?php html_email("email","required") ?>
 

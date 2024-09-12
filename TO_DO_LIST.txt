@@ -1,20 +1,22 @@
 Security
-- Roles: Admin + Member
-- Login + Logout
-- Password Hashing
+- Roles: Admin + Member ✅
+- Login + Logout ✅
+- Password Hashing ✅
 - Password Reset
 
 User Profile
-- Profile Update
+- Profile Update ✅
 - Password Update
-- Profile Photo Upload
+- Profile Photo Upload ✅
 
 Member Maintenance
 - Member Listing + Detail (Admin)
 - Basic Searching (Admin)
-- Member Registration
-- Profile Photo Upload	Product Maintenance (Admin)
-- Product Listing + Detail
+- Member Registration ✅
+- Profile Photo Upload ✅
+
+Product Maintenance (Admin)
+- Product Listing + Detail 
 - Basic Searching
 - Product CRUD
 - Product Photo Upload

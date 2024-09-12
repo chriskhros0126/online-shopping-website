@@ -8,7 +8,7 @@
             <img src="<?php echo $image_path ?>" alt="">
         </div>
             <div class="product-details">
-                <h2>Details</h1>
+                <h2>Profile Details</h1>
                 <p>Created At: <?php echo $date ?></p>
                 <p>Username: <?php echo $username ?></p>
                 <p>Email: <?php echo $email ?></p>

@@ -8,7 +8,7 @@
         if (!is_email($email)) {
             echo "<script>
                 alert('Invalid email.');
-                window.location.href = '../login.php'
+                window.location.href = 'login.php'
             </script>";
             die();
         }else{
@@ -26,7 +26,7 @@
             } else {
                 echo "<script>
                     alert('Invalid password.');
-                    window.location.href = '../login.php'
+                    window.location.href = 'login.php'
                 </script>";
                 die();
             }

@@ -4,13 +4,13 @@
         ""=>"All Materials",
         "steel" => "Steel",
         'titanium' => "Titanium",
-        "O-MEGASTEEL" => "O-MEGASTEEL"
+        "OMEGASTEEL" => "OMEGASTEEL"
     ];
     $size_options=[
         ""=>"All Sizes",
         "41"=>"41mm",
         "42"=>"42mm",
-        "42.5"=>"42.5mm"
+        "45.5"=>"45.5mm"
     ];
     $price_options=[
         "low-high"=>"Price: Low-High",
