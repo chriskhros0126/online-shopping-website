@@ -73,17 +73,23 @@ if (!function_exists('require_login')) {
 // ============================================================================
 
 // Is GET request? (define only if it doesn't exist)
-if (!function_exists('is_get')) {
     function is_get() {
         return $_SERVER['REQUEST_METHOD'] == 'GET';
     }
-}
 
 // Is POST request? (define only if it doesn't exist)
-if (!function_exists('is_post')) {
     function is_post() {
         return $_SERVER['REQUEST_METHOD'] == 'POST';
     }
+
+
+    function is_set($var){
+        return isset($var) && !empty($var);
+    }
+
+// Is email?
+function is_email($value) {
+    return filter_var($value, FILTER_VALIDATE_EMAIL) !== false;
 }
 
 // ============================================================================
@@ -129,4 +135,52 @@ if (!function_exists('html_number')) {
                      min='$min' max='$max' step='$step' $attr>";
     }
 }
+
+// ============================================================================
+// Cart Functionality
+// ============================================================================
+
+// Add to cart function
+if (!function_exists('add_to_cart')) {
+    function add_to_cart($watch_id, $quantity) {
+        global $conn;
+        // Check if user is logged in
+        if (!is_logged_in()) {
+            // Redirect to login page if user is not logged in
+            echo "<script>
+            alert('Invalid email or password.');
+            window.location.href = '../login.php'
+            </script>";
+        }
+
+        // Get the logged-in user's ID from the session
+        $user_id = $_SESSION['user']['user_id'];
+
+        // Check if the item is already in the cart
+        $checkCartSQL = "SELECT * FROM cart WHERE user_id = ? AND watch_id = ?";
+        $stmt = $conn->prepare($checkCartSQL);
+        $stmt->bind_param('ii', $user_id, $watch_id);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        if ($result->num_rows > 0) {
+            // If the item already exists in the cart, update the quantity
+            $updateCartSQL = "UPDATE cart SET quantity = quantity + ? WHERE user_id = ? AND watch_id = ?";
+            $updateStmt = $conn->prepare($updateCartSQL);
+            $updateStmt->bind_param('iii', $quantity, $user_id, $watch_id);
+            $updateStmt->execute();
+        } else {
+            // If the item doesn't exist in the cart, insert a new row
+            $insertCartSQL = "INSERT INTO cart (user_id, watch_id, quantity) VALUES (?, ?, ?)";
+            $insertStmt = $conn->prepare($insertCartSQL);
+            $insertStmt->bind_param('iii', $user_id, $watch_id, $quantity);
+            $insertStmt->execute();
+        }
+
+        // Redirect to cart page or display a success message
+        header('Location: cart.php');  // Redirect to the cart page after adding
+        exit();
+    }
+}
+
 ?>

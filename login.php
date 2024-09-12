@@ -1,8 +1,5 @@
-<html>
-<header>
-    <?php include('partials/_head.php'); ?>
-    <link rel="stylesheet" href="asset/css/login.css">
-</header>
+<?php include('partials/_head.php'); ?>
+<link rel="stylesheet" href="asset/css/login.css">
 
 <body>
     <h2>Login</h2>

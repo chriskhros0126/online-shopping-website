@@ -1,6 +1,16 @@
+<?php 
+include('partials/_head.php');
+// Add to Cart
+
+if (is_post() && is_set($_POST['add_to_cart'])){
+    $watch_id = $_POST['watch_id'];
+    add_to_cart($watch_id, 1);
+}
+
+?>
+
 <link rel="stylesheet" href="asset/css/shop.css">
 <body>
-    <?php include('partials/_head.php'); ?>
 
     <div class="slider-container">
         <div class="slider">
@@ -19,6 +29,7 @@
             ?>
         </div>
     </div>
+    
 
     <div class="main">
         <form method="GET" action="">
@@ -103,8 +114,11 @@
                         <a href="productDetail.php?watch_id=<?php echo $watch_id ?>"><h3><?php echo $row['sub_model']?></h3></a>
                         <h5><?php echo htmlspecialchars($row['size']); ?>MM | <?php echo htmlspecialchars($row['material']); ?> | <?php echo htmlspecialchars($row['strap']); ?></h5>
                         <h4>RM<?php echo number_format($row['price'], 2); ?></h4>
-                        <a class="cart-btn">Add to Cart</a>
-                        <a class="buy-btn">Buy</a>
+                        <form method="POST" action="shop.php">
+                            <input type="hidden" name="watch_id" value="<?php echo $watch_id ?>">
+                            <button type="submit" name="add_to_cart" class="cart-btn">Add to Cart</button>
+                        </form>
+                        <button class="buy-btn">Buy</button>
                     </div>
                     <?php
                 }

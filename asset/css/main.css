@@ -16,6 +16,16 @@ body {
     background-color: black;
     padding: 10px 20px;
     box-shadow: 0px 1px 0px 0px rgba(203,193,193,0.75);
+    top: 0;
+    left: 0;
+    width: 100vw; 
+    background-color: #000;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px; 
+    box-sizing: border-box;
 
 }
 
@@ -52,4 +62,14 @@ body {
     color: #000;
     background-color: #eee;
     transition: 0.3s;
+}
+
+.header a {
+    color: white;
+    text-decoration: none;
+    padding: 10px;
+}
+
+.header .cart {
+    margin-left: auto;
 }
