@@ -19,7 +19,7 @@
         <?php if (is_logged_in()) { ?>
                <a href="profile.php">Profile</a>
                <a href="cart.php">Cart (0)</a>
-               <a href="logout.php">Logout</a> <!-- Option to log out -->
+               <a href="process/logout_process.php">Logout</a> <!-- Option to log out -->
         <?php } else { ?>
                <a href="login.php">Login</a>
                <a href="cart.php">Cart (0)</a>

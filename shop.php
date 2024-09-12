@@ -81,8 +81,8 @@
                         <a href="productDetail.php?watch_id=<?php echo $watch_id ?>"><h3><?php echo $row['sub_model']?></h3></a>
                         <h5><?php echo $row['size'] ?>MM | <?php echo $row['material']?> | <?php echo $row['strap']?></h5>
                         <h4>RM<?php echo number_format($row['price'], 2) ?></h4>
-                        <button class="cart-btn">Add to Cart</button>
-                        <button class="buy-btn">Buy</button>
+                        <a class="cart-btn">Add to Cart</a>
+                        <a class="buy-btn">Buy</a>
                     </div>
             <?php
                 }
