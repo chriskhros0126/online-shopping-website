@@ -1,21 +1,20 @@
-<?php include('partials/_head.php'); ?>
-<link rel="stylesheet" href="asset/css/login.css">
+<?php
+    require 'config/_login_base.php';
 
-<body>
-    <h2>Login</h2>
-    <form action="process/login_process.php" method="POST">
+    include 'partials/_head.php';
+?>
+    <link rel="stylesheet" href="asset/css/login.css">
+    <form action="login.php" method="post">
+        <h>Login</h>
         <label for="email">Email</label>
-        <input type="email" name="email" id="email" required>
+        <?php html_email("email","required") ?>
 
         <label for="password">Password</label>
-        <input type="password" name="password" id="password" required>
+        <?php html_password("password","required") ?>
 
         <button type="submit">Login</button>
         <p>Dont have an account? <a href="register.php">Register</a></p>
-        <p><a href="fotgot_password.php">Forgot password</a></p>
+        <p><a href="forgot_password.php">Forgot password</a></p>
     </form>
-</body>
-</html>
-
-
-
+<?php
+    include 'partials/_footer.php';

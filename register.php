@@ -1,27 +1,25 @@
-<html>
-
-<header>
-    <?php include('partials/_head.php'); ?>
+<?php
+    require 'config/_register_base.php';
+    include 'partials/_head.php';
+?>
     <link rel="stylesheet" href="asset/css/register.css">
-</header>
-
-<body>
-    <h2>Register</h2>
-    <form action="process/register_process.php" method="POST">
+    <form action="register.php" method="POST">
+        <h2>Register</h2>
         <label for="username">Username</label>
-        <input type="text" name="username" id="username" required>
+        <?php html_text("username","required") ?>
 
         <label for="email">Email</label>
-        <input type="email" name="email" id="email" required>
+        <?php html_email("email","required") ?>
 
         <label for="password">Password</label>
-        <input type="password" name="password" id="password" required>
+        <?php html_password("password","required") ?>
 
         <label for="confirm_password">Confirm Password</label>
-        <input type="password" name="confirm_password" id="confirm_password" required>
+        <?php html_password("confirm_password","required") ?>
 
         <button type="submit">Register</button>
         <p>Already have an account? <a href="login.php">Login</a></p>
     </form>
-</body>
-</html>
+
+<?php
+    include 'partials/_footer.php';

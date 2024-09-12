@@ -1,0 +1,52 @@
+/* MAIN CSS */
+@import url('https://fonts.googleapis.com/css2?family=Playwrite+CU:wght@100..400&display=swap');
+
+/* HEADER CSS */
+
+.header {
+    top: 0;
+    left: 0;
+    width: 100vw; 
+    background-color: #000;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px; 
+    box-sizing: border-box;
+}
+
+.header .left, .header .right {
+    display: flex;
+    align-items: center;
+}
+
+.header .left a h1 {
+    font-family: "Playwrite CU", cursive;
+    font-size: 2.0em;
+    color: #fff;
+}
+
+.header .left a{
+    text-decoration: none;
+    padding: 0px 12px;
+}
+
+.header .left a:visited{
+    color: black;
+}
+
+.header .right a {
+    color: #ffffff; /* White text for links */
+    text-decoration: none; /* No underline */
+    font-size: 20px;
+    padding: 12px;
+    text-decoration: none;
+    display: block;
+}
+
+.header .right a:hover {
+    color: #000;
+    background-color: #eee;
+    transition: 0.3s;
+}
