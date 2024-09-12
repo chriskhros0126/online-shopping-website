@@ -1,7 +1,7 @@
 <?php
 include('../config/_base.php');
 
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+if (is_post()) {
     $email = $_POST['email'];
     $password = $_POST['password'];
 
@@ -20,7 +20,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         alert('Invalid email or password.');
         window.location.href = '../login.php'
         </script>";
-
     }
 }
 ?>
