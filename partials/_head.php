@@ -13,7 +13,7 @@
         
         <div class="right">
             <?php if (is_logged_in() && is_array($_SESSION['user'])) { ?>
-                <?php if ($_SESSION['user']['is_admin']) { ?>
+                <?php if ($_SESSION['user']) { ?>
                     <a href="admin_dashboard.php">Member Listings</a>
                     <a href="profile.php">Profile</a>
                     <a href="logout.php">Logout</a>

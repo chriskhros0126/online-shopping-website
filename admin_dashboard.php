@@ -6,6 +6,7 @@
 ?>
     <link rel="stylesheet" href="asset/css/shop.css">
 
+    <p>dashsboard</p>
     <div class="main">
         <form method="GET" action="">
             <div class="sidebar">
