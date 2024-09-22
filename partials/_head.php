@@ -12,15 +12,14 @@
         </div>
         
         <div class="right">
-            <?php if (is_logged_in() && is_array($_SESSION['user'])) { ?>
+            <?php if (is_logged_in() && is_array(value: $_SESSION['user'])) { ?>
                 <?php if ($_SESSION['user']['is_admin']) { ?>
-                    <a href="admin_dashboard.php">Member Listings</a>
-                    <a href="profile.php">Profile</a>
                     <a href="logout.php">Logout</a>
                 <?php }else{ ?>
                     <a href="profile.php">Profile</a>
                     <a href="cart.php">Cart</a>
                     <a href="logout.php">Logout</a>
+                    <a href="order_history.php">Orders</a>
                 <?php } ?>
             <?php } else { ?>
                 <a href="login.php">Login</a>

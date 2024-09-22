@@ -272,3 +272,35 @@ button:hover {
 .container a:hover{
     color:#888;
 }
+
+/* Search Form Styling */
+.search-form {
+    display: flex;
+    justify-content: center; /* Center the search bar */
+    margin: 20px 0; /* Space above and below */
+}
+
+.search-form input {
+    padding: 8px;
+    margin-right: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px; /* Consistent border radius */
+    flex: 1; /* Allow input to grow */
+}
+
+.search-form .btn-search {
+    padding: 8px 15px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 5px; /* Consistent border radius */
+    cursor: pointer;
+}
+
+.search-form .btn-search:hover {
+    background-color: #0056b3; /* Darken on hover */
+}
+
+.search-section {
+    margin: 25px;
+}

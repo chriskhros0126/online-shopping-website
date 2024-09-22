@@ -1,0 +1,90 @@
+/* Main container layout */
+.main {
+    display: flex;
+    flex-direction: row;
+}
+
+/* Sidebar width and positioning */
+.sidebar {
+    width: 200px;
+    background-color: #f1f1f1;
+    border-right: 1px solid #ddd;
+    height: 100vh; /* Full height for sidebar */
+    position: sticky;
+    top: 0;
+}
+
+/* Content area for form */
+.content {
+    flex-grow: 1; /* Take up remaining space */
+    padding: 20px;
+    background-color: #f9f9f9;
+}
+
+/* Center the form and the header */
+.content h2 {
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.product-form {
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto; /* Center the form */
+    background-color: #fff;
+    padding: 50px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.product-form .form-group {
+    margin-bottom: 20px;
+}
+
+.product-form label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 8px;
+}
+
+.product-form input, .product-form select, .product-form textarea {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.product-form textarea {
+    resize: vertical;
+}
+
+.btn-add {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.btn-add:hover {
+    background-color: #218838;
+}
+
+.product-image{
+    width: 250px;
+}
+
+.btn-edit{
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    text-decoration: none;
+}

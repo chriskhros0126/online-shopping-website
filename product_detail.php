@@ -16,8 +16,13 @@ include 'partials/_head.php';
                 </p>
             <div class="product-price">RM <?php echo number_format($price, 2); ?></div>
             <div class="product-buttons">
-                <button class="add-to-cart">Add to Cart</button>
-                <button class="buy-now">Buy Now</button>
+                <?php if (is_logged_in() && is_array(value: $_SESSION['user'])) { ?>
+                    <a href="process/add_to_cart.php?watch_id=<?php echo $watch_id; ?>" class="cart-btn">Add to Cart</a>
+                    <a href="process/buy_now.php?watch_id=<?php echo $watch_id; ?>" class="buy-btn">Buy</a>
+                <?php }else{?>
+                    <a href="login.php" class="cart-btn" onclick="alert('Please log in to add items to the cart.');">Add to Cart</a>
+                    <a href="login.php" class="buy-btn" onclick="alert('Please log in to proceed with buying.');">Buy</a>
+                <?php }?>
             </div>
         </div>
     </div>
