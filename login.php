@@ -1,6 +1,5 @@
 <?php
     require 'config/_login_base.php';
-
     include 'partials/_head.php';
 ?>
     <link rel="stylesheet" href="asset/css/login.css">
