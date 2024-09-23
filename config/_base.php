@@ -1,6 +1,6 @@
 <?php
-    require_once '_database_connection.php'; // Ensure it's only included once
-
+    require_once '_database_connection.php';
+    
     $_user = $_SESSION['user'] ?? null;
 
     function login($user, $url = '/') {
@@ -134,6 +134,38 @@
             echo "<script>alert('Uploaded Successfully.'); window.location.href = 'profile.php';</script>";
         } else {
             echo "<script>alert('File not Uploaded.'); window.location.href = 'profile.php';</script>";
+        }
+    }
+
+    function change_password($pdo) {
+        $current_password = req('current_password');
+        $new_password = req('new_password');
+        $confirm_password = req('confirm_password');
+    
+        // Check if the new passwords match
+        if ($new_password !== $confirm_password) {
+            echo "<script>alert('New passwords do not match.'); window.location.href = 'update_profile.php';</script>";
+            return;
+        }
+    
+        // Fetch the user's current password from the database
+        $stmt = $pdo->prepare("SELECT password FROM users WHERE id = ?");
+        $stmt->execute([$_SESSION['user']['id']]);
+        $user = $stmt->fetch();
+    
+        // Verify the current password
+        if (!password_verify($current_password, $user['password'])) {
+            echo "<script>alert('Current password is incorrect.'); window.location.href = 'update_profile.php';</script>";
+            return;
+        }
+    
+        // Hash the new password and update it in the database
+        $new_hashed_password = password_hash($new_password, PASSWORD_DEFAULT);
+        $stmt = $pdo->prepare("UPDATE users SET password = ? WHERE id = ?");
+        if ($stmt->execute([$new_hashed_password, $_SESSION['user']['id']])) {
+            echo "<script>alert('Password updated successfully.'); window.location.href = 'update_profile.php';</script>";
+        } else {
+            echo "<script>alert('Failed to update password.'); window.location.href = 'update_profile.php';</script>";
         }
     }
 ?>

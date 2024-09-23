@@ -18,7 +18,7 @@
         <li class="dropdown">
             <a href="#" class="dropdown-toggle">Orders</a>
             <ul class="dropdown-menu">
-                <li><a href="pending_orders.php">Pending Orders</a></li>
+                <li><a href="current_orders.php">Current Orders</a></li>
                 <li><a href="past_orders.php">Past Orders</a></li>
             </ul>
         </li>

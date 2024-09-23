@@ -31,7 +31,9 @@ form {
     padding: 40px;
     max-width: 400px;
     width: 100%;
-    margin: auto auto;
+    margin: auto;
+    margin-bottom: 25px;
+    margin-top: 25px;
 }
 
 label {
