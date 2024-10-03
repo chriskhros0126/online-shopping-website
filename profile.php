@@ -5,7 +5,11 @@
     <link rel="stylesheet" href="asset/css/product_detail.css">
     <div class="product-container">
         <div class="product-image">
+            <?php if($image_path == '' OR $image_path == null){ ?>
+            <img src="asset/default_profile_pic.jpg" alt="">
+            <?php }else{ ?>
             <img src="<?php echo $image_path ?>" alt="">
+            <?php } ?>
         </div>
             <div class="product-details">
                 <h2>Profile Details</h1>

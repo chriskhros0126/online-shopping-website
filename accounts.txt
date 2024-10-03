@@ -1,4 +1,0 @@
-ADMIN
-username : admin_chris
-email : admin_chris@email.com
-password : admin
